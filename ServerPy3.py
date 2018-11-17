@@ -18,7 +18,8 @@ class MyServer(BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers['Content-Length'])
         post_body = self.rfile.read(content_len)
-        print(post_body)
+        type(post_body)
+        self.send_response(200)
 
 myServer = HTTPServer((hostName, hostPort), MyServer)
 print(time.asctime(), "Server Starts - %s:%s" % (hostName, hostPort))
