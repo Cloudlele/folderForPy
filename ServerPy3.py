@@ -18,8 +18,15 @@ class MyServer(BaseHTTPRequestHandler):
     def do_POST(self):
         content_len = int(self.headers['Content-Length'])
         post_body = self.rfile.read(content_len).decode('utf-8')
-        print(post_body.split())
-        print(type(post_body))
+        print(post_body.strip().split())
+        iter = int()
+        for id, i in enumerate(post_body.split()):
+            if 'name' in i:
+                iter = id
+            if id == iter+1:
+                print(i)
+
+
         self.send_response(200)
         self.send_header("Content-type", "text/html")
         self.end_headers()
